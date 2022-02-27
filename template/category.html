@@ -1,0 +1,13 @@
+{% include "Base.html" %}
+
+{% block base %}
+
+{% if category_list %}
+{% for category in category_list  %}
+  <h1>{{category.book_name}}</h1>
+  <h3>Price {{category.book_price}}$</h3>
+  <h4>Public Date:- {{category.public_date}}</h4>
+{% endfor %}
+{% endif %}
+
+{% endblock base %}

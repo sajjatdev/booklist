@@ -1,0 +1,39 @@
+{% include "Base.html" %}
+
+{% block base %}
+
+{% if product %}
+  
+
+<div class="container">
+    <div class="row ">
+        <h2 class="setcation-title">Shop Now</h2>
+        {% for newdata in product %}
+        <div class="col-sm-4">
+          <div class="card m-3">
+            <img src="{{newdata.book_image.url}}" alt="" srcset="">
+            
+            <div class="card-body">
+              <h5  class="card-titlek "><a class="card-link "  href="{% url 'Home_app:product_details' product_id=newdata.id %}">{{newdata.book_name}}</a></h5>
+              <p class="card-text">Price:- {{newdata.book_price}}$</p>
+  
+              <div class="row">
+                <div class="col">
+                  <a class="card-link"
+                    href="{% url 'Home_app:category' category_id=newdata.Book_categorys.id %}">Cetagory:-
+                    {{newdata.Book_categorys}}</a>
+                  <a class="card-link" href="{% url 'Home_app:Auther' auther_id=newdata.auther.id %}">Auther:-
+                    {{newdata.auther}}</a>
+  
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endif %}
+{% endblock base %}

@@ -1,0 +1,31 @@
+{% include "Base.html" %}
+
+{% block base %}
+
+{% if auth_list %}
+<div class="container">
+    <h1 class="setcation-title">Author List</h1>
+    <br>
+    <div class="row">
+
+        {% for author in auth_list %}
+        <div class="col-sm-4">
+            <div class="card m-3">
+                <img src="{{author.author_photo.url}}" alt="" height="300px" width="auto" srcset="">
+                <p></p>
+                <div class="card-body">
+                    <h5 class="card-titlek ">{{author.name}}
+                    </h5>
+                    <p class="card-text">Address:- {{author.auther_address}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+
+{% endif %}
+
+{% endblock base %}

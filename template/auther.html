@@ -1,0 +1,45 @@
+{% include "Base.html" %}
+
+{% block base %}
+{% if authDetails %}
+
+<div class="container auther_profile">
+  <div class="row ">
+    <div class="col-md-4">
+      <div class="auther_profile">
+        <img src="{{authDetails.author_photo.url}}" alt="{{authDetails.name}}"
+          srcset="{{authDetails.author_photo.url}}">
+         
+      </div>
+
+    </div>
+    <div class="col-md-3 auther_content">
+      <h1>{{authDetails.name}}</h1>
+      <Address>Address: {{authDetails.auther_address}}</Address>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+
+{% endif %}
+
+
+<div class="container">
+  <h3>Book List</h3>
+
+  {% if auther_book %}
+  {% for book_list in auther_book %}
+
+  <ul>
+    <li>{{book_list.book_name}}</li>
+  </ul>
+
+  {% endfor %}
+
+  {% endif %}
+</div>
+
+
+{% endblock base %}

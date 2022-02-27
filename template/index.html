@@ -1,0 +1,84 @@
+{% include "Base.html" %}
+
+{% block base %}
+
+
+<!-- Start Slider Scation -->
+
+{% if slider_data %}
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+
+  <div class="carousel-inner">
+
+    {% for slider in slider_data %}
+
+    <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+      <img src="{{slider.image_slider.url}}" class="d-block w-100" alt="{{slider.title}}">
+      <div class="container section_container">
+        <h1>{{slider.title}}</h1>
+        <p class="contect">{{slider.sub_title}}</p>
+        <a href="{% url 'Home_app:shop' %}" class="btn btn-success btn-lg">Shop Now</a>
+      </div>
+    </div>
+
+    {% endfor %}
+
+  </div>
+
+
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+{% endif %}
+
+<!-- End Slider Scation -->
+
+<!-- Start Product List Scation -->
+
+{% if book_list %}
+<div class="container">
+  <h1 class="setcation-title">Popular Product</h1>
+  <br>
+  <div class="row">
+
+    {% for newdata in book_list %}
+    <div class="col-sm-4">
+      <div class="card m-3">
+        <img src="{{newdata.book_image.url}}" alt="" srcset="">
+        <p></p>
+        <div class="card-body">
+          <h5 class="card-titlek "><a class="card-link "
+              href="{% url 'Home_app:product_details' product_id=newdata.id %}">{{newdata.book_name}}</a></h5>
+          <p class="card-text">Price:- {{newdata.book_price}}$</p>
+
+          <div class="row">
+            <div class="col">
+              <a class="card-link" href="{% url 'Home_app:category' category_id=newdata.Book_categorys.id %}">Cetagory:-
+                {{newdata.Book_categorys}}</a>
+              <a class="card-link" href="{% url 'Home_app:Auther' auther_id=newdata.auther.id %}">Auther:-
+                {{newdata.auther}}</a>
+
+              .
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+
+{% endif %}
+
+<!-- End Product List Secation -->
+{% endblock base %}

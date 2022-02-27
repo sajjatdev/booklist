@@ -1,0 +1,35 @@
+{% include "Base.html" %}
+
+{% block base %}
+
+{% if cart_data %}
+
+<div class="container">
+    <h2>Cart Page</h2>
+    <br>
+    <br>
+    <ul class="list-group">
+
+        {% for hasData in cart_data %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{hasData.book_name}}
+            <span class="">Price: {{hasData.book_price}}$</span>
+        </li>
+
+        {% endfor %}
+        <br>
+        <br>
+        <h3>Total: {{total}}$</h3>
+
+        <a class="btn btn-success" href="">Check Out</a>
+
+    </ul>
+</div>
+
+{% else %}
+
+<h1>No found Cart Data</h1>
+{% endif %}
+
+
+{% endblock base %}

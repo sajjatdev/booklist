@@ -1,0 +1,35 @@
+{% include "Base.html" %}
+
+{% block base %}
+
+{% if product_details %}
+
+
+<div class="container auther_profile">
+    <div class="row">
+        <div class="col product_details_image">
+            <img src="{{product_details.book_image.url}}" alt="{{product_details.book_name}}"
+                srcset="{{product_details.book_image.url}}">
+        </div>
+        <div class="col">
+            <br>
+            <br>
+            <h2>{{product_details.book_name}}</h2>
+            <p> Auther: {{product_details.auther}}</p>
+            <p> Cetagory: {{product_details.Book_categorys}}</p>
+            <br>
+            <h4>Price: {{product_details.book_price}}$</h4>
+
+            <br>
+            <br>
+            <a class="btn btn-success " href="{% url 'Home_app:add_to_cart' cart_id=product_details.id %}">Add to
+                Cart</a>
+
+        </div>
+
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock base %}
